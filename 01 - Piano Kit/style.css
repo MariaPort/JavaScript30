@@ -1,0 +1,104 @@
+html {
+  font-size: 10px;
+  background: rgb(12, 31, 35) url(img/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.page-main {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-side-keys,
+.right-side-keys {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+}
+
+.left-side-keys {
+  width: 450px;
+}
+
+.right-side-keys {
+  width: 570px;
+}
+
+.key {
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px 5px;
+  transition: all .07s ease;
+  width: 80px;
+  height: 240px;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 5px black;
+}
+
+.key:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #d9b18d;
+}
+
+.key:active {
+  border-color: #d9b18d;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #d9b18d;
+  box-shadow: 0 0 10px #d9b18d;
+}
+
+kbd {
+  display: block;
+  font-size: 40px;
+}
+
+.sound {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #d9b18d;
+}
+
+.s-key, .g-key {
+  order: 1;
+}
+
+.d-key, .h-key {
+  order: 2;
+}
+
+.f-key, .j-key {
+  order: 3;
+}
+
+.e-key, .k-key {
+  order: 4;
+}
+
+.r-key, .y-key {
+  order: 5;
+}
+
+.u-key {
+  order: 6;
+}
+
+.i-key {
+  order: 6;
+}
