@@ -60,14 +60,14 @@
           <span class="sound">B-note</span>
         </div>
       </div>
-      <audio data-key="69" src="sounds/E-key-C#.wav"></audio>
+      <audio data-key="69" src="sounds/E-key-Cm.wav"></audio>
       <audio data-key="82" src="sounds/R-key-Eb.wav"></audio>
       <audio data-key="83" src="sounds/S-key-C.wav"></audio>
       <audio data-key="68" src="sounds/D-key-D.wav"></audio>
       <audio data-key="70" src="sounds/F-key-E.wav"></audio>
 
-      <audio data-key="89" src="sounds/Y-key-F#.wav"></audio>
-      <audio data-key="85" src="sounds/U-key-G#.wav"></audio>
+      <audio data-key="89" src="sounds/Y-key-Fm.wav"></audio>
+      <audio data-key="85" src="sounds/U-key-Gm.wav"></audio>
       <audio data-key="73" src="sounds/I-key-Bb.wav"></audio>
       <audio data-key="71" src="sounds/G-key-F.wav"></audio>
       <audio data-key="72" src="sounds/H-key-G.wav"></audio>
@@ -76,7 +76,35 @@
 
     </main>
     <script type="text/javascript">
-      
+
+      function playSound(e) {
+        let audio;
+        let key;
+        
+        if (e.type == 'keydown') {
+          audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+          key = document.querySelector(`.key[data-key='${e.keyCode}']`);
+        } else {
+          audio = document.querySelector(`audio[data-key='${e.path[0].attributes[0].value}']`);
+          key = document.querySelector(`.key[data-key='${e.path[0].attributes[0].value}']`);
+          console.log(key);
+        }
+
+        if(!audio) return; //stop the function
+        audio.currentTime = 0; //rewind to the start
+        audio.play();
+        key.classList.add('playing');
+      }
+
+      function removeTransition(e) {
+        if(e.propertyName !== 'transform') return; //skip it if it's not a transform
+        this.classList.remove('playing');
+      }
+
+      const keys = document.querySelectorAll('.key');
+      keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+      keys.forEach(key => key.addEventListener('click', playSound));
+      window.addEventListener('keydown', playSound);
     </script>
   </body>
 </html>
