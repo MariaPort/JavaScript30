@@ -48,14 +48,7 @@ body, html {
   text-shadow: 0 0 5px black;
 }
 
-.key:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px #d9b18d;
-}
 
-.key:active {
-  border-color: #d9b18d;
-}
 
 .playing {
   transform: scale(1.1);
