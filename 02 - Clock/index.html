@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="clock">
+      <div class="hours">
+          <div class="hours_tenths digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+          </div>
+          <div class="hours_units digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+          </div>
+      </div>
+
+      <div class="dots">
+        <span>.</span>
+        <span>.</span>
+      </div>
+
+      <div class="minutes">
+          <div class="minutes_tenths digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+          </div>
+          <div class="minutes_units digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+          </div>
+      </div>
+
+      <div class="dots">
+        <span>.</span>
+        <span>.</span>
+      </div>
+
+      <div class="seconds">
+          <div class="seconds_tenths digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+          </div>
+          <div class="seconds_units digit-block">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+          </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+        const hoursTenths = document.querySelectorAll('.hours_tenths span')
+        const hoursUnits = document.querySelectorAll('.hours_units span')
+        const minutesTenths = document.querySelectorAll('.minutes_tenths span')
+        const minutesUnits = document.querySelectorAll('.minutes_units span')
+        const secondsTenths = document.querySelectorAll('.seconds_tenths span')
+        const secondsUnits = document.querySelectorAll('.seconds_units span')
+
+        function setDate () {
+          const now = new Date();
+
+          const hours = now.getHours();
+          const minutes = now.getMinutes();
+          const seconds = now.getSeconds();
+
+          transformDigit(hoursTenths, hoursUnits, hours);
+          transformDigit(minutesTenths, minutesUnits, minutes);
+          transformDigit(secondsTenths, secondsUnits, seconds);
+        }
+
+        function transformDigit (arrTenths, arrUnits, timeUnits) {
+          arrTenths.forEach(function (n, i)  {
+            n.classList.remove('now');
+          });
+          arrUnits.forEach(function (n, i)  {
+            n.classList.remove('now');
+          });
+          arrTenths[Math.floor(timeUnits / 10)].classList.add('now');
+          arrUnits[timeUnits < 10 ? timeUnits : +('' + timeUnits).charAt(1)].classList.add('now');
+        }
+
+        setInterval(setDate, 1000);
+
+        setDate();
+    </script>
+  </body>
+</html>

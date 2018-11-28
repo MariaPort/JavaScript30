@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(46, 40, 42);
+  color: rgba(175, 120, 100, .3);
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.clock {
+  display: flex;
+  margin: 10% auto;
+  width: 500px;
+}
+
+.digit-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours,
+.minutes,
+.seconds {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 150px;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 50px;
+  font-size: 80px;
+  color: rgb(175, 120, 100);
+}
+
+.hours span,
+.minutes span,
+.seconds span {
+  transform: rotate(270deg);
+  transition: all 0.2ms;
+}
+
+span.now {
+  transform: rotate(360deg);
+  font-size: 80px;
+  color: rgb(175, 120, 100);
+}
